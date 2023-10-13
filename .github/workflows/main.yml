@@ -49,5 +49,5 @@ jobs:
         ssh StrictHostKeyChecking=no -i "key.pem" ubuntu@ec2-13-212-85-156.ap-southeast-1.compute.amazonaws.com
     - name: Test Docker
       run: |
-        docker -v
+        docker
 

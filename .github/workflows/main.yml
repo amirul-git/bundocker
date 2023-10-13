@@ -36,7 +36,7 @@ jobs:
   #       docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
   #       docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
   deploy:
-    runs-on: ubuntu-lateset
+    runs-on: ubuntu-latest
     environment:
       name: production
     steps:
@@ -46,6 +46,7 @@ jobs:
       run: |
         echo "${{secrets.AWS_SERVER_RSA}}" > key.pem
         chmod 400 key.pem
+        ssh -i "key.pem" ubuntu@${{secrets.AWS_EC2_SERVER}}
     - name: Test Docker
       run: |
         docker -v

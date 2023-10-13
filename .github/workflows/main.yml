@@ -43,10 +43,12 @@ jobs:
     - name: Check out the code
       uses: actions/checkout@v3
     - name: Connect To Server
+      env:
+        SERVER: ${{secrets.AWS_EC2_SERVER}}
       run: |
         echo "${{secrets.AWS_SERVER_RSA}}" > key.pem
         chmod 400 key.pem
-        ssh StrictHostKeyChecking=no -i "key.pem" "${{secrets.AWS_EC2_SERVER}}"
+        ssh StrictHostKeyChecking=no -i "key.pem" $SERVER
     - name: Test Docker
       run: |
         docker -v

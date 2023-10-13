@@ -56,8 +56,9 @@ jobs:
         echo "${{secrets.AWS_SERVER_RSA}}" > key.pem
         chmod 400 key.pem
         ssh -o StrictHostKeyChecking=no -i key.pem ${{secrets.AWS_EC2_SERVER}}
-    - name: Docker pull image
+    - name: Pull docker image
       run: |
-        docker pull 318770414672.dkr.ecr.ap-southeast-1.amazonaws.com/bunserver:latest
-        docker images
-
+        ssh -o StrictHostKeyChecking=no -i key.pem ${{secrets.AWS_EC2_SERVER}} 'sudo docker pull 318770414672.dkr.ecr.ap-southeast-1.amazonaws.com/bunserver:latest'
+    - name: Show images
+      run: |
+        ssh -o StrictHostKeyChecking=no -i key.pem ${{secrets.AWS_EC2_SERVER}} 'sudo docker images'

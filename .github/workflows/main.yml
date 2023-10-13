@@ -61,4 +61,4 @@ jobs:
         ssh -o StrictHostKeyChecking=no -i key.pem ${{secrets.AWS_EC2_SERVER}} "aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 318770414672.dkr.ecr.ap-southeast-1.amazonaws.com"
     - name: Pull docker image
       run: 
-        ssh -o StrictHostKeyChecking=no -i key.pem ${{secrets.AWS_EC2_SERVER}} "sudo docker push 318770414672.dkr.ecr.ap-southeast-1.amazonaws.com/bunserver:latest"
+        ssh -o StrictHostKeyChecking=no -i key.pem ${{secrets.AWS_EC2_SERVER}} "sudo docker pull 318770414672.dkr.ecr.ap-southeast-1.amazonaws.com/bunserver:latest"

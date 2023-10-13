@@ -43,8 +43,6 @@ jobs:
     - name: Check out the code
       uses: actions/checkout@v3
     - name: Connect To Server
-      env:
-        SERVER_EC2: ${{secrets.AWS_EC2_SERVER}}
       run: |
         echo "${{secrets.AWS_SERVER_RSA}}" > key.pem
         chmod 400 key.pem

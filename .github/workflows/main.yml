@@ -59,9 +59,6 @@ jobs:
     - name: Login to AWS CLI
       run: |
         ssh -o StrictHostKeyChecking=no -i key.pem ${{secrets.AWS_EC2_SERVER}} "aws ecr get-login-password --region ap-southeast-1 | sudo docker login --username AWS --password-stdin 318770414672.dkr.ecr.ap-southeast-1.amazonaws.com && sudo docker pull 318770414672.dkr.ecr.ap-southeast-1.amazonaws.com/bunserver:latest"
-    - name: Stop docker-compose down
-      run: |
-        ssh -o StrictHostKeyChecking=no -i key.pem ${{secrets.AWS_EC2_SERVER}} "sudo docker compose down"
-    - name: Start docker-compose up
+    - name: Start docker compose
       run: |
         ssh -o StrictHostKeyChecking=no -i key.pem ${{secrets.AWS_EC2_SERVER}} "sudo docker compose up"

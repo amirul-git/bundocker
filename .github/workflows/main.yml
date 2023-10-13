@@ -58,6 +58,6 @@ jobs:
         ssh -o StrictHostKeyChecking=no -i key.pem ${{secrets.AWS_EC2_SERVER}}
     - name: Docker pull image
       run: |
-        docker pull ${{DOCKER_IMAGE}}
+        docker pull ${{secrets.DOCKER_IMAGE}}
         docker images
 

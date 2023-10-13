@@ -58,6 +58,6 @@ jobs:
         ssh -o StrictHostKeyChecking=no -i key.pem ${{secrets.AWS_EC2_SERVER}}
     - name: Docker pull image
       run: |
-        docker pull ${{secrets.DOCKER_IMAGE}}
+        docker pull 318770414672.dkr.ecr.ap-southeast-1.amazonaws.com/bunserver:latest
         docker images
 
